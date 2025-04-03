@@ -20,7 +20,7 @@ activity_level = st.selectbox("Activity Level", [
     "Super active (athlete-level or physical job)"
 ])
 
-# Section 2: Expanded Lifestyle & Behavior
+# Section 2: Behavior & Lifestyle Diagnostic
 st.header("2. Behavior & Lifestyle Diagnostic")
 
 st.subheader("Eating Habits")
@@ -56,16 +56,14 @@ change_stage = st.selectbox("How ready are you to change your habits?", ["Not re
 recent_changes = st.text_area("What health changes have you made in the past month?")
 support_system = st.selectbox("Do you have a support system for your health journey?", ["Yes", "No", "Somewhat"])
 
-# Section 3: Metabolic Calculations
+# Section 3: Metabolic Estimates
 st.header("3. Metabolic Estimates")
 
-# BMR calculation (Mifflin-St Jeor Equation)
 if sex == "Male":
     bmr = 10 * weight_kg + 6.25 * height_cm - 5 * age + 5
 else:
     bmr = 10 * weight_kg + 6.25 * height_cm - 5 * age - 161
 
-# TDEE multiplier
 activity_multipliers = {
     "Sedentary (little or no exercise)": 1.2,
     "Lightly active (light exercise 1–3 days/week)": 1.375,
@@ -79,9 +77,43 @@ st.subheader("Your Metabolic Summary")
 st.write(f"**Basal Metabolic Rate (BMR):** {bmr:.2f} kcal/day")
 st.write(f"**Total Daily Energy Expenditure (TDEE):** {tdee:.2f} kcal/day")
 
-if goal_weight_kg > 0:
-    st.info("Next step: Caloric deficit planning, recipes, and personalized workouts coming soon.")
+# Section 4: Meal Plan - Breakfast Ideas
+st.header("4. Sample Meal Plan: Breakfast Ideas")
 
-# Footer
+with st.expander("High-Protein Greek Yogurt Bowl (350 kcal)"):
+    st.markdown("""
+    **Ingredients:**
+    - 3/4 cup plain Greek yogurt (non-fat)
+    - 1/4 cup granola
+    - 1/2 banana, sliced
+    - 1 tbsp chia seeds
+    - Handful of berries
+
+    **Macros:** ~25g protein, 35g carbs, 10g fat
+
+    **Instructions:**
+    1. Layer yogurt in a bowl.
+    2. Add banana, granola, and berries.
+    3. Sprinkle chia seeds on top.
+    4. Enjoy chilled.
+    """)
+
+with st.expander("Oatmeal with Peanut Butter & Cinnamon (380 kcal)"):
+    st.markdown("""
+    **Ingredients:**
+    - 1/2 cup oats
+    - 1 tbsp peanut butter
+    - 1/2 cup almond milk
+    - Dash of cinnamon
+    - Optional: sliced apple or banana
+
+    **Macros:** ~10g protein, 45g carbs, 15g fat
+
+    **Instructions:**
+    1. Cook oats in almond milk.
+    2. Stir in peanut butter and cinnamon.
+    3. Top with fruit.
+    """)
+
 st.markdown("---")
-st.caption("This is an early prototype. Content will be expanded with clinical references, meal plans, and exercise routines.")
+st.caption("This prototype will soon include lunch, dinner, and exercise plans.")
