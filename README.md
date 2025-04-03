@@ -1,1 +1,1 @@
-# Metabolic Health App with Recipes
+# Enhanced Metabolic Health App with Recipes, Motivation, and Exercise

@@ -1,9 +1,9 @@
 import streamlit as st
 
 # Title
-st.title("Metabolic Health & Weight Assistant")
+st.title("Metabolic Health & Motivation Assistant")
 
-# Section 1: Personal Information
+# Section 1: Personal Info
 st.header("1. Personal Profile")
 name = st.text_input("Name")
 age = st.number_input("Age", min_value=10, max_value=100)
@@ -20,45 +20,8 @@ activity_level = st.selectbox("Activity Level", [
     "Super active (athlete-level or physical job)"
 ])
 
-# Section 2: Behavior & Lifestyle Diagnostic
-st.header("2. Behavior & Lifestyle Diagnostic")
-
-st.subheader("Eating Habits")
-meals_per_day = st.slider("How many meals do you eat per day?", 1, 6, 3)
-snacks_per_day = st.slider("How many snacks do you eat per day?", 0, 5, 2)
-night_eating = st.selectbox("Do you eat late at night (after 9 PM)?", ["Never", "Sometimes", "Often", "Always"])
-sugar_intake = st.selectbox("How often do you consume sugary foods/drinks?", ["Rarely", "1–2x/week", "Daily", "Multiple times/day"])
-emotional_eating = st.selectbox("Do you eat when you're stressed or emotional?", ["Never", "Occasionally", "Often", "Always"])
-
-st.subheader("Sleep Hygiene")
-sleep_duration = st.slider("Average sleep duration (hours)", 3, 12, 7)
-sleep_quality = st.selectbox("How would you rate your sleep quality?", ["Poor", "Fair", "Good", "Excellent"])
-sleep_consistency = st.selectbox("Do you go to bed/wake up at consistent times?", ["Rarely", "Sometimes", "Usually", "Always"])
-
-st.subheader("Stress & Mental Health")
-stress_level = st.slider("Stress level (1 = very low, 10 = very high)", 1, 10, 5)
-stress_source = st.multiselect("What are your biggest sources of stress?", ["Work", "Health", "Relationships", "Finances", "Time management", "Other"])
-stress_coping = st.selectbox("How do you typically cope with stress?", ["Exercise", "Food", "Sleep", "Talking to someone", "Not sure", "Other"])
-
-st.subheader("Hydration & Energy")
-water_cups = st.slider("Cups of water per day", 0, 20, 8)
-caffeine_use = st.selectbox("Do you use caffeine (coffee/energy drinks)?", ["No", "1x/day", "2x/day", "3+ times/day"])
-daytime_fatigue = st.selectbox("How often do you feel tired during the day?", ["Never", "Sometimes", "Often", "Always"])
-
-st.subheader("Physical Activity")
-sitting_hours = st.slider("How many hours a day are you sitting?", 0, 16, 8)
-preferred_workouts = st.multiselect("What kinds of exercise do you enjoy?", ["Walking", "Jogging", "Weightlifting", "Yoga", "HIIT", "Dancing", "Other"])
-steps_per_day = st.slider("Estimated steps per day", 0, 20000, 5000)
-workout_consistency = st.selectbox("How consistent is your workout habit?", ["Not consistent", "1–2x/week", "3–4x/week", "5+ days/week"])
-
-st.subheader("Behavior Change Readiness")
-change_stage = st.selectbox("How ready are you to change your habits?", ["Not ready", "Thinking about it", "Taking small steps", "Actively changing"])
-recent_changes = st.text_area("What health changes have you made in the past month?")
-support_system = st.selectbox("Do you have a support system for your health journey?", ["Yes", "No", "Somewhat"])
-
-# Section 3: Metabolic Estimates
-st.header("3. Metabolic Estimates")
-
+# Section 2: Metabolic Calculations
+st.header("2. Metabolic Estimates")
 if sex == "Male":
     bmr = 10 * weight_kg + 6.25 * height_cm - 5 * age + 5
 else:
@@ -73,14 +36,13 @@ activity_multipliers = {
 }
 tdee = bmr * activity_multipliers[activity_level]
 
-st.subheader("Your Metabolic Summary")
-st.write(f"**Basal Metabolic Rate (BMR):** {bmr:.2f} kcal/day")
-st.write(f"**Total Daily Energy Expenditure (TDEE):** {tdee:.2f} kcal/day")
+st.write(f"**BMR:** {bmr:.2f} kcal/day")
+st.write(f"**TDEE:** {tdee:.2f} kcal/day")
 
-# Section 4: Meal Plan - Breakfast Ideas
-st.header("4. Sample Meal Plan: Breakfast Ideas")
+# Section 3: Breakfast with health tips and motivation
+st.header("3. Breakfast Recipes with Health Benefits")
 
-with st.expander("High-Protein Greek Yogurt Bowl (350 kcal)"):
+with st.expander("🌿 High-Protein Greek Yogurt Bowl (350 kcal)"):
     st.markdown("""
     **Ingredients:**
     - 3/4 cup plain Greek yogurt (non-fat)
@@ -91,14 +53,15 @@ with st.expander("High-Protein Greek Yogurt Bowl (350 kcal)"):
 
     **Macros:** ~25g protein, 35g carbs, 10g fat
 
-    **Instructions:**
-    1. Layer yogurt in a bowl.
-    2. Add banana, granola, and berries.
-    3. Sprinkle chia seeds on top.
-    4. Enjoy chilled.
+    **Health Benefits:**
+    - Greek yogurt is rich in probiotics, great for gut health.
+    - Chia seeds and berries provide fiber to keep you full longer.
+    - Bananas offer quick-release energy with potassium.
+
+    **Motivation:** Start your morning with protein and color—fuel your success!
     """)
 
-with st.expander("Oatmeal with Peanut Butter & Cinnamon (380 kcal)"):
+with st.expander("🍎 Oatmeal with Peanut Butter & Cinnamon (380 kcal)"):
     st.markdown("""
     **Ingredients:**
     - 1/2 cup oats
@@ -109,11 +72,38 @@ with st.expander("Oatmeal with Peanut Butter & Cinnamon (380 kcal)"):
 
     **Macros:** ~10g protein, 45g carbs, 15g fat
 
-    **Instructions:**
-    1. Cook oats in almond milk.
-    2. Stir in peanut butter and cinnamon.
-    3. Top with fruit.
+    **Health Benefits:**
+    - Oats are complex carbs that stabilize blood sugar.
+    - Peanut butter adds healthy fats and protein.
+    - Cinnamon may support blood sugar control.
+
+    **Motivation:** You’re building habits, not restrictions. Every meal matters.
     """)
 
+# Section 4: Exercise Routine
+st.header("4. 15-Min Belly Fat Burn Routine (No Equipment)")
+
+st.markdown("""
+**Do this circuit 3 times:**  
+1. 🏃‍♂️ Jumping Jacks — 30 seconds  
+2. 🧘‍♀️ Mountain Climbers — 30 seconds  
+3. 🔥 Russian Twists — 20 reps  
+4. 💪 Plank — 30 seconds  
+5. ⬆️ Leg Raises — 15 reps  
+
+**Rest:** 60 seconds between rounds  
+**Goal:** Burn fat and strengthen your core.
+
+**Motivation:** Consistency beats intensity. Keep showing up—you’ve got this!
+""")
+
+# Section 5: Health Tips
+st.header("5. Daily Health & Motivation Tip 💡")
+
+st.info("Drink a glass of water before each meal. Hydration supports digestion and curbs cravings.")
+
+st.success("You’re not alone. Progress takes time, but every step forward counts.")
+
+# Footer
 st.markdown("---")
-st.caption("This prototype will soon include lunch, dinner, and exercise plans.")
+st.caption("Next version: add lunch/dinner meals, daily tracker, and exportable summary.")
